@@ -2,48 +2,101 @@
  * Tab
  */
 import React, { Component } from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {StyleSheet, Text, View, Button} from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
 import HomeScreen from './home';
 import ListScreen from './list';
 import AboutScreen from './about'
+import LoginScreen from './login'; 
+
+const HomeStackNavigator = createStackNavigator({
+  Home:{
+      screen: HomeScreen,
+      navigationOptions: {
+          headerTitle:'最近',
+          headerStyle: {
+            backgroundColor: 'orange',
+           
+          },
+          headerTitleStyle: {
+            color: '#fff',
+          }
+      }
+  },
+  Login:{
+    screen: LoginScreen,
+  }
+});
+
+const ListStackNavigator = createStackNavigator({
+  List:{
+      screen: ListScreen,
+      navigationOptions: {
+          headerTitle:'日志',
+      }
+  }
+});
+
+const AboutStackNavigator = createStackNavigator({
+  About:{
+      screen: AboutScreen,
+      navigationOptions: {
+          headerTitle:'我的',
+      }
+  }
+});
 
 const TabNavigator = createBottomTabNavigator({
   Home: {
-    screen: HomeScreen,
+    screen: HomeStackNavigator,
     navigationOptions:{
-      tabBarLabel: '首页',
+      tabBarLabel: '最近',
+      tabBarIcon: ({tintColor}) => (
+        <Icon name="ios-alarm" size={24} color={tintColor} />
+      ),
     },
   },
   List: {
-    screen: ListScreen,
+    screen: ListStackNavigator,
     navigationOptions:{
-      tabBarLabel: '列表页',
+      tabBarLabel: '日志',
+      tabBarIcon: ({tintColor}) => (
+        <Icon name="ios-book" size={24} color={tintColor} />
+      ),
     },
   },
   About: {
-    screen: AboutScreen,
+    screen: AboutStackNavigator,
     navigationOptions:{
-      tabBarLabel: '关于我',
+      tabBarLabel: '我的',
+      tabBarIcon: ({tintColor}) => (
+        <Icon name="ios-contact" size={24} color={tintColor} />
+      ),
     },
   }
 },{
-  tabBarOptions: {
-    activeTintColor: '#494949',
-    inactiveTintColor: '#999999',
-    labelStyle: {
-      fontSize: 12,
-      marginBottom: 5,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+  tabBarPosition:'bottom',
+  swipeEnabled:'true',
+  animationEnabled:'true',
+  tabBarOptions:{
+    activeTintColor:'orange',
+    inactiveTintColor:'#999',
+    showLabel:'true',
+    showIcon:'true',
+    upperCaseLabel:'true',
+    pressColor:'#788493',
+    pressOpacity:'0.8',
     style: {
-      borderTopWidth: 1,
-      borderTopColor: '#c3c3c3',
-      height: 50,
-      backgroundColor:'#fff'
+        backgroundColor: '#fff',
+        paddingBottom: 1,
+        paddingTop:1,
+        borderTopColor: '#ccc',
+    },
+    labelStyle: {
+        fontSize: 11,
+        margin: 1
     },
   }
 });

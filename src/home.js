@@ -1,6 +1,7 @@
 /**
- * 个人APP
- * 首页
+ * name: notebook APP
+ * author: 吴雨杰
+ * description: 首页
  */
 
 import React, {Component} from 'react';
@@ -9,22 +10,12 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import HeaderCom from './component/header'
 
 export default class Home extends Component {
-  static navigationOptions = {
-    headerTitle: <HeaderCom title='首页'/>,
-    headerRight: (
-      <Button
-        onPress={() => alert('This is a button!')}
-        title="Info"
-        color="#fff"
-      />
-    ),
-  };
+  
   render() {
     const { navigate } = this.props.navigation;
-    return (
+    return (  
       <View style={styles.HomePage}>
-        <Text>这是首页</Text>
-        <Icon name="closecircleo" size={30} color="red" />
+        <Text onPress={() => navigate('Login')}>这是首页1</Text>
      </View>
     );
   }

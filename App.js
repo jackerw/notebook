@@ -4,19 +4,18 @@ import { createAppContainer, createStackNavigator, StackActions, NavigationActio
 import Tab from './src/tab';
 import Login from './src/login'; 
 import Home from './src/home';
+import ListScreen from './src/list';
 
 
 
 
 const AppNavigator = createStackNavigator({
-  Home: {
+  Tab: {
     screen: Tab,
-  },
-  Login: {
-    screen: Login
   }
 }, {
-    initialRouteName: 'Home',
+    headerMode: 'none',
+    initialRouteName: 'Tab',
 });
 
 export default createAppContainer(AppNavigator);

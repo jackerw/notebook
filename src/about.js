@@ -9,7 +9,7 @@ import HeaderCom from './component/header'
 export default class About extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-          header: () => <HeaderCom title='关于我1'/>,
+          header: () => null,
       }
   }
   render() {

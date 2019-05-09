@@ -1,6 +1,7 @@
 /**
- * 个人APP
- * 列表页
+ * name: notebook 简易APP
+ * author: 吴雨杰
+ * description: 日志列表页
  */
 
 import React, {Component} from 'react';
@@ -8,11 +9,9 @@ import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 import HeaderCom from './component/header'
 
 export default class List extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-          header: () => <HeaderCom title='列表页'/>,
-      }
-  }
+  static navigationOptions = {
+    title: 'Home',
+  };
   render() {
     return (
       <View style={styles.listPage}>
