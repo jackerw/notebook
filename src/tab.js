@@ -9,10 +9,10 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 import HomeScreen from './home';
 import ListScreen from './list';
 import AboutScreen from './about'
-import LoginScreen from './login'; 
+import DetailScreen from './detail'; 
 
 const HomeStackNavigator = createStackNavigator({
-  Home:{
+  Home: {
       screen: HomeScreen,
       navigationOptions: {
           headerTitle:'最近',
@@ -25,17 +25,24 @@ const HomeStackNavigator = createStackNavigator({
           }
       }
   },
-  Login:{
-    screen: LoginScreen,
-  }
 });
 
 const ListStackNavigator = createStackNavigator({
   List:{
       screen: ListScreen,
       navigationOptions: {
-          headerTitle:'日志',
-      }
+        headerTitle:'日志',
+        headerStyle: {
+          backgroundColor: 'orange',
+         
+        },
+        headerTitleStyle: {
+          color: '#fff',
+        }
+    }
+  },
+  Detail: {
+    screen: DetailScreen,
   }
 });
 
@@ -43,8 +50,15 @@ const AboutStackNavigator = createStackNavigator({
   About:{
       screen: AboutScreen,
       navigationOptions: {
-          headerTitle:'我的',
-      }
+        headerTitle:'我的',
+        headerStyle: {
+          backgroundColor: 'orange',
+         
+        },
+        headerTitleStyle: {
+          color: '#fff',
+        }
+    }
   }
 });
 

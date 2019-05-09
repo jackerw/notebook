@@ -13,9 +13,10 @@ export default class List extends Component {
     title: 'Home',
   };
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.listPage}>
-        <Text>这是列表页</Text>
+        <Text onPress={()=>navigate('Detail')}>这是列表页</Text>
      </View>
     );
   }

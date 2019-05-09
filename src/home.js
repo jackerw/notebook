@@ -7,7 +7,6 @@
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import HeaderCom from './component/header'
 
 export default class Home extends Component {
   
