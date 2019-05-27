@@ -5,7 +5,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button } from 'react-native';
 
 export default class Detail extends Component {
 

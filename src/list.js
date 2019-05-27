@@ -1,29 +1,52 @@
 /**
- * name: notebook 简易APP
+ * name: notebook APP
  * author: 吴雨杰
- * description: 日志列表页
+ * description: 列表页
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
-import HeaderCom from './component/header'
+import { StyleSheet, Text, View, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
+import styles from "./sass/list.scss";
+import HTMLView from 'react-native-htmlview';
 
-export default class List extends Component {
-  static navigationOptions = {
-    title: 'Home',
-  };
+const { width } = Dimensions.get('window');
+export default class Home extends Component {
+  state = {
+    articleList: [],
+  }
+  componentDidMount(){
+     fetch('https://www.easy-mock.com/mock/5ce79794db58af63d27a449b/example/pageList')
+    .then(response=>response.json())
+    .then(data=>{
+      this.setState({
+        articleList: data.data
+      })
+    }) 
+  }
+  listItem = ({index, item}) => {
+    const { navigation } = this.props;
+    return(
+      <TouchableOpacity onPress={()=>navigation.navigate('Detail')}>
+        <View key={index} style={styles.itemViewStyle}>
+          <Text style={styles.num}>{index + 1}</Text>
+          <Text style={styles.title}>
+            {item.key}
+          </Text>
+          <Image style={{flex: 3}} source={{uri: item.img}}/>
+        </View>
+      </TouchableOpacity>
+    )
+  }
   render() {
     const { navigate } = this.props.navigation;
-    return (
-      <View style={styles.listPage}>
-        <Text onPress={()=>navigate('Detail')}>这是列表页</Text>
+    return (  
+      <View style={styles.homePage}>
+        <FlatList
+          data={this.state.articleList}
+          renderItem={this.listItem}
+        />
      </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  listPage: {
-    
-  },
-});
