@@ -1,0 +1,74 @@
+.homePage {
+  background: #fff;
+}
+.itemViewStyle{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-color: #ddd;
+    border-bottom-width: 1px;
+    padding: 10px;
+   
+}
+.title{
+  color: #333;
+  line-height: 20px;
+  flex: 7.5;
+  margin-top: -4px;
+  padding:0 10px;
+}
+.num{
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  background: #f06565;
+  color:#fff;
+  border-radius: 15px;
+  margin-right: 10px;
+  font-size: 12px;
+  flex: .5;
+}
+.viewImage{
+  width: 100px;
+  height: 50px;
+  flex: 3;
+}
+
+.container{
+  flex: 1
+}
+
+.slide {
+  flex: 1;
+  justify-content:center;
+  background-Color: transparent;
+}
+
+.slide1{
+  flex: 1;
+  justify-content:center;
+  align-Items: center;
+  background-Color:#9DD6EB;
+}
+
+.slide2{
+  flex: 1;
+  justify-content:center;
+  align-Items: center;
+  background-Color:#97CAE5;
+}
+.slide3{
+  flex: 1;
+  justify-content:center;
+  align-Items: center;
+  background-Color:#92BBD9;
+}
+
+.text{
+  color:#fff;
+  font-size: 30px;
+}
+.image{
+  flex: 1;
+}

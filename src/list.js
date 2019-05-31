@@ -26,7 +26,9 @@ export default class Home extends Component {
   listItem = ({index, item}) => {
     const { navigation } = this.props;
     return(
-      <TouchableOpacity onPress={()=>navigation.navigate('Detail')}>
+      <TouchableOpacity onPress={()=>navigation.navigate('Detail',{
+        title: item.key
+      })}>
         <View key={index} style={styles.itemViewStyle}>
           <Text style={styles.num}>{index + 1}</Text>
           <Text style={styles.title}>
