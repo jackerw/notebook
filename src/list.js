@@ -7,14 +7,17 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
 import styles from "./sass/list.scss";
+import { connect } from 'react-redux';
 import HTMLView from 'react-native-htmlview';
 
 const { width } = Dimensions.get('window');
-export default class Home extends Component {
+
+export default class List extends Component {
   state = {
     articleList: [],
   }
   componentDidMount(){
+     console.log(this.props);
      fetch('https://www.easy-mock.com/mock/5ce79794db58af63d27a449b/example/pageList')
     .then(response=>response.json())
     .then(data=>{
