@@ -13,14 +13,18 @@ import { connect } from 'react-redux';
 @connect(({ note }) => ({ note }))
 export default class Home extends Component {
   state = {
- 
+    
   }
   componentDidMount(){
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'note/fetchProList'
+    })
     console.log(this.props);
   }
 
   render() {
-    const { count } = this.props;
+    const { note: { count } } = this.props;
     alert(count);
     const { navigate } = this.props.navigation;
     return (  
