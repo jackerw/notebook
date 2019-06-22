@@ -11,20 +11,20 @@ import { connect } from 'react-redux';
 import HTMLView from 'react-native-htmlview';
 
 const { width } = Dimensions.get('window');
-
+@connect(({ note }) => ({ note }))
 export default class List extends Component {
   state = {
     articleList: [],
   }
   componentDidMount(){
-     console.log(this.props);
-     fetch('https://www.easy-mock.com/mock/5ce79794db58af63d27a449b/example/pageList')
-    .then(response=>response.json())
-    .then(data=>{
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'note/fetchProList',
+    }).then(res =>{
       this.setState({
-        articleList: data.data
+        articleList: res.data
       })
-    }) 
+    })
   }
   listItem = ({index, item}) => {
     const { navigation } = this.props;

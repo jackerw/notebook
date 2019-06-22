@@ -18,14 +18,18 @@ export default class Home extends Component {
   componentDidMount(){
     const { dispatch } = this.props;
     dispatch({
-      type: 'note/fetchProList'
+      type: 'note/fetchProList',
+      payload:{
+        pageSize: '1'
+      }
+    }).then(res =>{
+      console.log(res)
     })
     console.log(this.props);
   }
 
   render() {
     const { note: { count } } = this.props;
-    alert(count);
     const { navigate } = this.props.navigation;
     return (  
       <View>

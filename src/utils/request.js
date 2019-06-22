@@ -1,6 +1,4 @@
-export const path = 'http://120.77.239.205:6688';
-// 正式
-// export const path = ''
+// ResultFul API 状态码
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -30,18 +28,7 @@ export default function request(
     options = {
       expirys: true,
     },
-    isLocalUrl
   ) {
-    /**
-     * Produce fingerprints based on url and parameters
-     * Maybe url has the same parameters
-     */
-    const fingerprint = url + (options.body ? JSON.stringify(options.body) : '');
-    const hashcode = hash
-      .sha256()
-      .update(fingerprint)
-      .digest('hex');
-  
     // 是否允许携带缓存请求
     const defaultOptions = {
       credentials: 'omit',
@@ -67,28 +54,8 @@ export default function request(
         };
       }
     }
-  
-    // 请求是否走缓存
-    // const expirys = options.expirys || 60;
-    // options.expirys !== false, return the cache,
-    // if (options.expirys !== false) {
-    //   console.log('走了缓存')
-    //   const cached = sessionStorage.getItem(hashcode);
-    //   const whenCached = sessionStorage.getItem(`${hashcode}:timestamp`);
-    //   if (cached !== null && whenCached !== null) {
-    //     const age = (Date.now() - whenCached) / 1000;
-    //     if (age < expirys) {
-    //       const response = new Response(new Blob([cached]));
-    //       return response.json();
-    //     }
-    //     sessionStorage.removeItem(hashcode);
-    //     sessionStorage.removeItem(`${hashcode}:timestamp`);
-    //   }
-    // }
-    const fetchUrl = isLocalUrl ? url : `${path}${url}`;
     return (
-      fetch(fetchUrl, { ...newOptions })
-        .then(checkStatus)
+      fetch(url, { ...newOptions })
         // .then(response => cachedSave(response, hashcode))
         .then(response => {
           // DELETE and 204 do not return data by default
@@ -102,26 +69,6 @@ export default function request(
         .catch(e => {
           console.log(e);
           const status = e.name;
-          if (status === 401) {
-            // @HACK
-            /* eslint-disable no-underscore-dangle */
-            window.g_app._store.dispatch({
-              type: 'login/logout',
-            });
-            return;
-          }
-          // environment should not be used
-          if (status === 403) {
-            router.push('/exception/403');
-            return;
-          }
-          if (status <= 504 && status >= 500) {
-            // router.push('/exception/500');
-            return;
-          }
-          if (status >= 404 && status < 422) {
-            router.push('/exception/404');
-          }
         })
     );
   }
