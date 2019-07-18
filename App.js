@@ -13,7 +13,6 @@ const app = create(); // 创建dva实例，可传递配置参数。https://dvajs
 
 models.forEach((b) => { // 装载models对象
   app.model(b);
-
 });
 app.start(); // 实例初始化
 
