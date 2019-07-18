@@ -10,8 +10,8 @@ import noteModel from './src/models/note'
 
 const models = [noteModel];
 const app = create(); // 创建dva实例，可传递配置参数。https://dvajs.com/api/#app-dva-opts
-models.forEach((o) => { // 装载models对象
-  app.model(o);
+models.forEach((b) => { // 装载models对象
+  app.model(b);
 });
 app.start(); // 实例初始化
 
