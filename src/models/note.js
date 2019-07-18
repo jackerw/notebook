@@ -17,7 +17,6 @@ export default {
       console.log(_.payload);
       const response = yield call(ProList, _.payload);
       return returnPromise(response);
-      console.log(response,'哈哈哈');
     },
   },
   subscriptions: {

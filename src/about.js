@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Platform, StyleSheet, Text, View, FlatList, Button, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View, FlatList, Button, TouchableOpacity, Image} from 'react-native';
 import styles from "./sass/about.scss";
 
 export default class About extends Component {
@@ -48,6 +48,9 @@ export default class About extends Component {
   render() {
     return (
       <View style={styles.aboutPage}>
+        <View>
+          <Image style={{width:200,height:20}} source={{uri: 'https://newimg.oppein.cn/fendhttps/updata/todayhot/source/2019032015251497088300149351.jpg'}}/>
+        </View>
          <FlatList
           data={this.state.aboutMenu}
           renderItem={this.listItem}
